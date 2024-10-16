@@ -28,20 +28,20 @@ header {
 /* Navigation Styles */
 nav {
     display: flex; /* Flexbox layout for navigation */
-    justify-content: center; /* Center navigation links */
+    justify-content: space-between; /* Space between navigation links */
     background-color: #333; /* Dark background for navigation */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: nowrap; /* Prevent wrapping on smaller screens */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
 }
 
 nav a {
-    padding: 10px 20px; /* Padding for navigation links */
+    padding: 10px 15px; /* Padding for navigation links */
     color: white; /* Text color for links */
     text-decoration: none; /* Remove underline from links */
     text-align: center; /* Center text in links */
     min-width: 120px; /* Minimum width for links */
     font-family: 'Khmer OS Siemreap', sans-serif; /* Khmer font for nav */
     font-size: 14px; /* Font size for nav links */
-    flex: 1; /* Allow links to grow equally */
 }
 
 /* Add hover effect for links */
@@ -83,9 +83,9 @@ footer {
     }
 
     nav a {
-        flex: none; /* Prevent links from growing, so they fit in one row */
-        width: auto; /* Set width to auto for flexibility */
-        padding: 10px 10px; /* Adjust padding for full-width links */
+        flex: none; /* Prevent links from growing */
+        padding: 10px 5px; /* Adjust padding for mobile */
+        min-width: auto; /* Allow the width to adjust */
     }
 
     .content {
