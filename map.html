@@ -119,7 +119,7 @@
 
         loadGeoJsonLayer(
             'data/protected_area_boundaries.geojson',
-            'តំបន់ការពារធម្មជាតិខ provinciaក្រចេះ',
+            'តំបន់ការពារធម្មជាតិខេត្តក្រចេះ',
             function(feature) {
                 return {
                     color: '#0000ff', // Custom color for protected areas
@@ -181,14 +181,14 @@
             transition: transform 0.2s;
             color: black; /* Change the color to suit your design */
         }
-
+    
         /* Responsive text size */
         @media (max-width: 600px) {
             .custom-label {
                 font-size: 12px; /* Smaller font on small screens */
             }
         }
-
+    
         /* Control positioning */
         .leaflet-control-layers {
             position: absolute;
@@ -197,7 +197,12 @@
             z-index: 1000;
             min-width: 150px; /* Minimum width */
         }
-
+    
+        /* Adjust the right position for better alignment */
+        .leaflet-control-layers {
+            right: 5px; /* Adjust this value to move it closer to the corner */
+        }
+    
         /* Expand layer control based on text length */
         .leaflet-control-layers label {
             white-space: nowrap; /* Prevent line break */
@@ -205,5 +210,6 @@
             display: inline-block; /* Allow width adjustment */
         }
     </style>
+    
 </body>
 </html>
