@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map - KT-Protected Area Management</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> <!-- Leaflet CSS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> <!-- Leaflet JS -->
+</head>
+<body>
+    <header>
+        <h1>ផែនទីតំបន់ការពារធម្មជាតិភូមិសាស្រ្តខេត្តក្រចេះ</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">ទំព័រដើម</a>
+        <a href="laws.html">លិខិតបទដ្ឋានគតិយុត្ត</a>
+        <a href="map.html" class="active">ផែនទី</a>
+        <a href="data.html">ព័ត៍មាន ​និងទិន្នន័យ</a>
+        <a href="contact.html">ទំនាក់ទំនង</a>
+    </nav>
+
+    <div id="map" style="height: 600px;"></div> <!-- Div for the map -->
+
+    <footer>
+        <p>&copy; ប្រព័ន្ធគ្រប់គ្រងតំបន់ការពារធម្មជាតិ​ ២០២៤. អ្នកផ្តួចផ្តើម៖ ឆាយ ឌួងសាវុធ, អ្នកគ្រប់គ្រងគម្រោង៖ ឌី​ សុធី, អ្នកផលិត៖ ហ៊ុន ប៊ុណ្ណារិទ្ធិ. រក្សាសិទ្ធិគ្រប់យ៉ាង</p>
+    </footer>
+
+    <script src="js/script.js"></script> <!-- Link to your JavaScript file -->
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([12.603914969824718, 105.05405132171238], 8); // Center the map
+
+        // Add OpenTopoMap tile layer
+        var openTopoLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            attribution: '&copy; <a href="https://opentopomap.org/copyright">OpenTopoMap</a> contributors &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Create a control for the layers
+        var overlayMaps = {};
+        var geoJsonLayers = {};
+        var labels = {}; // Object to store labels
+
+        // Function to load GeoJSON layers
+        function loadGeoJsonLayer(url, layerName, styleFunction, labelProperty) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var geoJsonLayer = L.geoJson(data, {
+                        style: styleFunction,
+                        onEachFeature: function (feature, layer) {
+                            layer.on('click', function () {
+                                alert("Feature: " + (feature.properties[labelProperty] || "Unknown"));
+                            });
+
+                            // Create label based on specified labelProperty
+                            if (feature.properties && feature.properties[labelProperty]) {
+                                var label = L.marker(layer.getBounds().getCenter(), {
+                                    icon: L.divIcon({
+                                        className: 'custom-label',
+                                        html: feature.properties[labelProperty],
+                                        iconSize: 'auto', // Automatically adjust size based on content
+                                        iconAnchor: [50, 20] // Adjust anchor point if needed
+                                    })
+                                });
+                                labels[layerName] = labels[layerName] || [];
+                                labels[layerName].push(label);
+                                map.addLayer(label);
+                            }
+                        }
+                    });
+
+                    overlayMaps[layerName] = geoJsonLayer;
+                    geoJsonLayers[layerName] = geoJsonLayer;
+
+                    // Update the control to include the new layer
+                    L.control.layers(null, overlayMaps, {collapsed: false}).addTo(map);
+
+                    // Show only "Protected Areas" layer by default
+                    if (layerName === 'តំបន់ការពារធម្មជាតិខេត្តក្រចេះ') {
+                        geoJsonLayer.addTo(map); // Add the protected areas layer to the map
+                    }
+
+                    // Show/hide labels based on layer visibility
+                    geoJsonLayer.on('add', function () {
+                        labels[layerName].forEach(label => map.addLayer(label)); // Show labels when layer is added
+                    });
+                    geoJsonLayer.on('remove', function () {
+                        labels[layerName].forEach(label => map.removeLayer(label)); // Hide labels when layer is removed
+                    });
+                })
+                .catch(error => console.error('Error loading GeoJSON:', error));
+        }
+
+        // Load all your layers with custom styling and labeling
+        loadGeoJsonLayer(
+            'data/provincial_boundaries.geojson',
+            'ព្រំប្រទល់ខេត្តក្រចេះ',
+            function(feature) {
+                return {
+                    color: 'black',
+                    weight: 2,
+                    fillOpacity: 0
+                };
+            },
+            'No Need Label' // Attribute to label
+        );
+
+        loadGeoJsonLayer(
+            'data/district_boundaries.geojson',
+            'ព្រំប្រទល់ស្រុកក្នុងខេត្តក្រចេះ',
+            function(feature) {
+                return {
+                    color: 'black', // Custom color for district boundaries
+                    weight: 2,
+                    fillOpacity: 0
+                };
+            },
+            'District_K' // Attribute to label
+        );
+
+        loadGeoJsonLayer(
+            'data/protected_area_boundaries.geojson',
+            'តំបន់ការពារធម្មជាតិខេត្តក្រចេះ',
+            function(feature) {
+                return {
+                    color: '#0000ff', // Custom color for protected areas
+                    weight: 2,
+                    fillOpacity: 0.1
+                };
+            },
+            'PA_Name' // Attribute to label
+        );
+
+        loadGeoJsonLayer(
+            'data/communities_in_protected_area.geojson',
+            'សហគមន៍តំបន់ការពារធម្មជាតិខេត្តក្រចេះ',
+            function(feature) {
+                return {
+                    color: '#yellow', // Custom color for communities
+                    weight: 2,
+                    fillOpacity: 0.5
+                };
+            },
+            'CF_Name_Kh' // Attribute to label
+        );
+
+        loadGeoJsonLayer(
+            'data/district_centers.geojson', // I will add in the future
+            'District Centers',
+            function(feature) {
+                return {
+                    color: '#ffff00', // Custom color for district centers
+                    weight: 2,
+                    fillOpacity: 0.6
+                };
+            },
+            'District_Center_Name' // Attribute to label
+        );
+
+        loadGeoJsonLayer(
+            'data/protected_area_stations.geojson', // I will add in the future
+            'Protected Area Stations',
+            function(feature) {
+                return {
+                    color: '#ff8800', // Custom color for protected area stations
+                    weight: 2,
+                    fillOpacity: 0.5
+                };
+            },
+            'Station_Name' // Attribute to label
+        );
+    </script>
+
+    <style>
+        /* Custom styles for labels */
+        .custom-label {
+            font-family: 'Khmer OS Siemreap', sans-serif; /* Apply the Khmer font */
+            background-color: transparent; /* Remove background */
+            border: none; /* Remove border */
+            padding: 0; /* Remove padding */
+            font-size: 10px; /* Adjust the size according to zoom level */
+            transition: transform 0.2s;
+            color: black; /* Change the color to suit your design */
+        }
+
+        /* Responsive text size */
+        @media (max-width: 600px) {
+            .custom-label {
+                font-size: 12px; /* Smaller font on small screens */
+            }
+        }
+
+        /* Control positioning */
+        .leaflet-control-layers {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            min-width: 150px; /* Minimum width */
+        }
+
+        /* Expand layer control based on text length */
+        .leaflet-control-layers label {
+            white-space: nowrap; /* Prevent line break */
+            width: auto; /* Width adjusts to content */
+            display: inline-block; /* Allow width adjustment */
+        }
+    </style>
+</body>
+</html>

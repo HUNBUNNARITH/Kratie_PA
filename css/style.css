@@ -1,0 +1,95 @@
+/* Ensure html and body take full height */
+html, body {
+    height: 100%; /* Ensures the body and html take up the full height */
+    margin: 0; /* Remove default margin */
+}
+
+body {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Prey_Lang_Forest_Aerial.jpg/1200px-Prey_Lang_Forest_Aerial.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    font-family: Arial, sans-serif; /* Default font */
+    color: #333; /* Default text color */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Allow body to use flexbox in column direction */
+}
+
+/* Header Styles */
+header {
+    background-color: rgba(244, 244, 244, 0.9); /* Light background with transparency */
+    color: blue; /* Header text color */
+    padding: 10px 0; /* Padding for the header */
+    text-align: center; /* Center text */
+    font-family: 'Khmer OS Muol Light', sans-serif; /* Khmer font for header */
+    font-size: 18px; /* Font size for header */
+}
+
+/* Navigation Styles */
+nav {
+    display: flex; /* Flexbox layout for navigation */
+    justify-content: center; /* Center navigation links */
+    background-color: #333; /* Dark background for navigation */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+nav a {
+    padding: 10px 20px; /* Padding for navigation links */
+    color: white; /* Text color for links */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center; /* Center text in links */
+    min-width: 120px; /* Minimum width for links */
+    font-family: 'Khmer OS Siemreap', sans-serif; /* Khmer font for nav */
+    font-size: 14px; /* Font size for nav links */
+    flex: 1; /* Allow links to grow equally */
+}
+
+/* Add hover effect for links */
+nav a:hover {
+    background-color: #575757; /* Darker background on hover */
+}
+
+/* Content Styles */
+.content {
+    padding: 20px; /* Padding for content */
+    max-width: 800px; /* Maximum width for content area */
+    margin: 0 auto; /* Center the content */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+    flex-grow: 1; /* Allow the content to take up available space */
+    font-family: 'Khmer OS Siemreap', sans-serif; /* Khmer font for content */
+    font-size: 16px; /* Font size for content */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center; /* Center text in footer */
+    padding: 5px 0; /* Padding for footer */
+    background-color: #333; /* Dark background for footer */
+    color: white; /* Footer text color */
+    margin-top: auto; /* Push the footer to the bottom */
+    font-family: 'Khmer OS Siemreap', sans-serif; /* Khmer font for footer */
+    font-size: 12px; /* Font size for footer */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    header {
+        font-size: 16px; /* Smaller font size for smaller screens */
+    }
+
+    nav {
+        flex-direction: row; /* Keep nav items in a row on smaller screens */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+    }
+
+    nav a {
+        flex: none; /* Prevent links from growing, so they fit in one row */
+        width: auto; /* Set width to auto for flexibility */
+        padding: 10px 10px; /* Adjust padding for full-width links */
+    }
+
+    .content {
+        padding: 10px; /* Less padding on small devices */
+        max-width: 100%; /* Allow content to take the full width on small screens */
+    }
+}
