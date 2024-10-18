@@ -23,7 +23,18 @@ header {
     padding: 10px 0; /* Padding for the header */
     text-align: center; /* Center text */
     font-family: 'Khmer OS Muol Light', sans-serif; /* Khmer font for header */
-    font-size: 18px; /* Font size for header */
+    font-size: 16px; /* Font size for header */
+    height: 80px; /* Fixed height for header to prevent overlap */
+    line-height: 80px; /* Vertically center text in the header */
+}
+
+/* Adjust Main Section */
+.main-section {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the start of the main section */
+    height: calc(100vh - 80px); /* Full height minus the header's height */
+    overflow-y: auto; /* Enable vertical scrolling for the main section */
 }
 
 /* Navigation Styles */
