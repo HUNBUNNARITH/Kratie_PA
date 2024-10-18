@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KT-Protected Area Management - Laws</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your style.css -->
     <link href="path/to/KhmerOSMuolLight.ttf" rel="stylesheet" />
     <link href="path/to/KhmerOSSiemreap.ttf" rel="stylesheet" />
     <style>
-        /* Add your CSS adjustments here or link to an external stylesheet */
-        body {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Prey_Lang_Forest_Aerial.jpg/1200px-Prey_Lang_Forest_Aerial.jpg'); /* Change this to your background image path */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            font-family: 'KhmerOSMuolLight', sans-serif; /* Default font family */
+        html, body {
+            height: 100%; /* Ensure full height for the body */
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Prevent body from scrolling */
         }
 
-        .content {
-            max-height: 80vh; /* Limits the height to 80% of the viewport height */
-            overflow-y: auto; /* Adds vertical scrolling if content exceeds max height */
-            padding: 20px; /* Adds some padding for better readability */
-            background: rgba(255, 255, 255, 0.8); /* Optional: gives a light background for readability */
-            border-radius: 10px; /* Optional: rounded corners */
+        .main-section {
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height for the main section */
+            overflow-y: auto; /* Enable vertical scrolling for the main section */
         }
 
-        /* Additional styling for header, footer, and nav can go here */
+        .scrollable-content {
+            padding: 20px; /* Padding for better readability */
+            background: rgba(255, 255, 255, 0.8); /* Background color */
+            border-radius: 10px; /* Rounded corners */
+            width: 90%; /* Set width to make it responsive */
+            max-width: 800px; /* Optional: Maximum width */
+        }
+        
     </style>
 </head>
 <body>
@@ -44,51 +47,49 @@
     </nav>
 
     <div class="main-section">
-        <div class="content">
+        <div class="scrollable-content"> <!-- Scrollable content section -->
             <h2>ច្បាប់ និងបទដ្ឋាន</h2>
             <p>នៅទីនេះអ្នកអាចស្វែងរកច្បាប់និងបទដ្ឋានដែលទាក់ទងនឹងការការពារ និងការគ្រប់គ្រងតំបន់ការពារធម្មជាតិ។</p>
-            <h2>ច្បាប់ និងបទដ្ឋាន</h2>
-        <p>នៅទីនេះអ្នកអាចស្វែងរកច្បាប់និងបទដ្ឋានដែលទាក់ទងនឹងការការពារ និងការគ្រប់គ្រងតំបន់ការពារធម្មជាតិ។</p>
 
-        <h3>ព្រះរាជក្រម</h3>
-        <ul>
-            <li>ក្រមបរិស្ថាន​ និងធនធានធម្មជាតិ<a href="documents/ក្រមបរិស្ថាន និងធនធានធម្មជាតិ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-        </ul>
+            <h3>ព្រះរាជក្រម</h3>
+            <ul>
+                <li>ក្រមបរិស្ថាន​ និងធនធានធម្មជាតិ<a href="documents/ក្រមបរិស្ថាន និងធនធានធម្មជាតិ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+            </ul>
 
-        <h3>ព្រះរាជក្រឹត្យ</h3>
-        <ul>
-            <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
-        </ul>
+            <h3>ព្រះរាជក្រឹត្យ</h3>
+            <ul>
+                <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
+            </ul>
 
-        <h3>អនុក្រឹត្យ</h3>
-        <ul>
-            <li>អនុក្រឹត្យលេខ១៦១_ស្តីពីការប្រែតំបន់ប្រើប្រាស់ច្រើនយ៉ាងសសរស្តម្ភសត្វតោ<a href="documents/អនុក្រឹត្យលេខ១៦១_ស្តីពីការប្រែតំបន់ប្រើប្រាស់ច្រើនយ៉ាងសសរស្តម្ភសត្វតោ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-            <li>អនុក្រឹត្យលេខ១៨១_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រៃឡង់<a href="documents/អនុក្រឹត្យលេខ១៨១_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រៃឡង់.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-            <li>អនុក្រឹត្យលេខ១៨២_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃកែវសីមា<a href="documents/អនុក្រឹត្យលេខ១៨២_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃកែវសីមា.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-            <li>អនុក្រឹត្យលេខ១៨៧_ស្តីពីការកែប្រែដែនជម្រកសត្វព្រៃសំបូរ<a href="documents/អនុក្រឹត្យលេខ១៨៧_ស្តីពីការកែប្រែដែនជម្រកសត្វព្រៃសំបូរ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-            <li>អនុក្រឹត្យលេខ១៩០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រែកប្រសព្វ<a href="អនុក្រឹត្យលេខ១៩០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រែកប្រសព្វ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-            <li>អនុក្រឹត្យលេខ១៨០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃលំផាត់<a href="អនុក្រឹត្យលេខ១៨០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃលំផាត់.pdf" target="_blank">ទាញយកឯកសារ</a></li>
-        </ul>
+            <h3>អនុក្រឹត្យ</h3>
+            <ul>
+                <li>អនុក្រឹត្យលេខ១៦១_ស្តីពីការប្រែតំបន់ប្រើប្រាស់ច្រើនយ៉ាងសសរស្តម្ភសត្វតោ<a href="documents/អនុក្រឹត្យលេខ១៦១_ស្តីពីការប្រែតំបន់ប្រើប្រាស់ច្រើនយ៉ាងសសរស្តម្ភសត្វតោ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+                <li>អនុក្រឹត្យលេខ១៨១_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រៃឡង់<a href="documents/អនុក្រឹត្យលេខ១៨១_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រៃឡង់.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+                <li>អនុក្រឹត្យលេខ១៨២_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃកែវសីមា<a href="documents/អនុក្រឹត្យលេខ១៨២_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃកែវសីមា.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+                <li>អនុក្រឹត្យលេខ១៨៧_ស្តីពីការកែប្រែដែនជម្រកសត្វព្រៃសំបូរ<a href="documents/អនុក្រឹត្យលេខ១៨៧_ស្តីពីការកែប្រែដែនជម្រកសត្វព្រៃសំបូរ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+                <li>អនុក្រឹត្យលេខ១៩០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រែកប្រសព្វ<a href="documents/អនុក្រឹត្យលេខ១៩០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃព្រែកប្រសព្វ.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+                <li>អនុក្រឹត្យលេខ១៨០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃលំផាត់<a href="documents/អនុក្រឹត្យលេខ១៨០_ស្តីពីការប្រែដែនជម្រកសត្វព្រៃលំផាត់.pdf" target="_blank">ទាញយកឯកសារ</a></li>
+            </ul>
 
-        <h3>សារាចរ</h3>
-        <ul>
-            <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
-        </ul>
+            <h3>សារាចរ</h3>
+            <ul>
+                <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
+            </ul>
 
-        <h3>ប្រកាស</h3>
-        <ul>
-            <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
-        </ul>
+            <h3>ប្រកាស</h3>
+            <ul>
+                <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
+            </ul>
 
-        <h3>សេចក្តីជូនតំណឹង</h3>
-        <ul>
-            <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
-        </ul>
+            <h3>សេចក្តីជូនតំណឹង</h3>
+            <ul>
+                <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
+            </ul>
 
-        <h3>សេចក្តីសម្រេច</h3>
-        <ul>
-            <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
-        </ul>
+            <h3>សេចក្តីសម្រេច</h3>
+            <ul>
+                <li>កំពុងធ្វើការស្រាវជ្រាវ</li>
+            </ul>
         </div>
     </div>
 
